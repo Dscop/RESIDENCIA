@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "Bellas_Boutique_Cliente",
+    "slug": "Bellas_Boutique_Cliente",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "Bellas_Boutique_Cliente"
+}

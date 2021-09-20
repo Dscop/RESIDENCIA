@@ -1,0 +1,26 @@
+cd C:\RESIDENCIA // ruta de los proyectos
+npm install -g expo-cli // instalacion de expo
+
+npx create-react-native-app Bellas_Boutique_Administrador // crea el proyecto de la app de administrador
+cd Bellas_Boutique_Administrador // ruta a proyecto app administrador
+expo start // este es el bueno
+npm start ?? investigar cual es diferencia con expo start
+
+npx create-react-native-app Bellas_Boutique_Cliente // crea el proyecto de la app de cliente
+cd Bellas_Boutique_Cliente // ruta a proyecto app cliente
+expo start // inicia la simulacion de expo
+
+npm install @react-navigation/native*
+expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view*
+npm install @react-navigation/stack --force*
+// espera
+
+npm i --save @react-native-community/async-storage*
+npm i --save @react-native-community/masked-view*
+npm i --save react-native-elements*
+npm i --save react-native-snackbar*
+npm i --save react-native-vector-icons*
+
+npm i firebase*
+npm add @react-native-firebase/firestore*
+--------------------------------------------------
