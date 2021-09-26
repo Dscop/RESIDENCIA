@@ -12,12 +12,18 @@ const ProductList = (props) => {
     firebase.conexion.collection("productos").onSnapshot((querySnapshot) => {
       const productos = [];
       querySnapshot.docs.forEach((doc) => {
-        const { name, mail, phone } = doc.data();
+        const { nombre, descripcion, categoria, precio, color, inventario, talla, marca, estado } = doc.data();
         productos.push({
           id: doc.id,
-          name,
-          mail,
-          phone,
+          nombre,
+          descripcion,
+          categoria,
+          precio,
+          color,
+          inventario,
+          talla,
+          marca,
+          estado
         });
       });
       setProductos(productos);
@@ -28,19 +34,25 @@ const ProductList = (props) => {
     <ScrollView>
       <Button
         onPress={() => props.navigation.navigate("CreateProductScreen")}
-        title="Crear ususario"
+        title="Agregar articulo"
       />
-      {productos.map((user) => {
+      {productos.map((producto) => {
         return (
           <ListItem
-            key={user.id}
+            key={producto.id}
             bottomDivider
             onPress={() => {
-              props.navigation.navigate("UserDetailScreen", {
-                userId: user.id,
-                userName: user.name,
-                userMail: user.mail,
-                userPhone: user.phone,
+              props.navigation.navigate("ProductDetailScreen", {
+                productoId: producto.id,
+                productoNombre: producto.nombre,
+                productoDescripcion: producto.descripcion,
+                ProductoCategoria: producto.categoria,
+                productoPrecio: producto.precio,
+                productoColor: producto.color,
+                productoInventario: producto.inventario,
+                productoTalla: producto.talla,
+                productoMarca: producto.marca,
+                productoEstado: producto.estado
               });
             }}
           >
@@ -53,9 +65,11 @@ const ProductList = (props) => {
               rounded
             />
             <ListItem.Content>
-              <ListItem.Title>{user.name}</ListItem.Title>
-              <ListItem.Subtitle>{user.mail}</ListItem.Subtitle>
-              <ListItem.Subtitle>{user.phone}</ListItem.Subtitle>
+              <ListItem.Title>{producto.nombre}</ListItem.Title>
+              <ListItem.Subtitle>{producto.color}</ListItem.Subtitle>
+              <ListItem.Subtitle>{producto.talla}</ListItem.Subtitle>
+              <ListItem.Subtitle>{producto.marca}</ListItem.Subtitle>
+              <ListItem.Subtitle>{producto.inventario}</ListItem.Subtitle>
             </ListItem.Content>
           </ListItem>
         );
