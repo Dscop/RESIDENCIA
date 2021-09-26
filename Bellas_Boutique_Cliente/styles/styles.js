@@ -47,13 +47,12 @@ const loginStyles = StyleSheet.create({
         fontSize: 17,
         color: color.WHITE,
         paddingVertical: 15,
-        fontFamily: 'Poppins-Bold',
     },
 
     txtTransparent: {
         color: color.LIGHTPRIMARYCOLOR,
         fontSize: 14,
-        fontFamily: 'Poppins-Light',
+        //fontFamily: 'Arial',
     }
 })
 

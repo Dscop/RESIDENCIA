@@ -18,7 +18,7 @@ export default function LoginScreen(props){
             <View style={[loginStyles.container, {padding:50}]}>
                 <StatusBar backgroundColor={color.BLUE} translucent={true}/>
                 <View style={loginStyles.logo}>
-                    <Image source={require('../images/logo.jpg')}
+                    <Image source={require('../images/logo2.jpg')}
                     style={{height:250, width:250}}/>
                 </View>
                 <MyTextInput keyboardType='email-address' placeholder='E-mail' image='user'/>
@@ -32,7 +32,7 @@ export default function LoginScreen(props){
                 </View>
                 <View style={loginStyles.btnTransparent}>
                     <TouchableOpacity>
-                        <Text style={[loginStyles.btntxt, {color: color.BLUE}]} onPress={() => props.navigation.navigate("CreateUserScreen")}>Registrarse</Text>
+                        <Text style={[loginStyles.btntxt, {color: color.BLUE}]}>Registrarse</Text>
                     </TouchableOpacity>
                 </View>
                 <View>

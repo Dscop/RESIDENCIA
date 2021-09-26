@@ -19,12 +19,15 @@ export default function MyTextInput(props){
         leftIcon={<Icon size={24} color={color.PRIMARYCOLOR} 
         type={'font-awesome'} name={props.image}/>}
         rightIcon={props.bolGone?
+        
         <TouchableOpacity activeOpacity = { 0.8 } style={styles.btnVisibility} onPress = {props.onPress}>
         <Image style={ styles.btnImage} tintColor={color.PRIMARYCOLOR} 
         source = { (props.secureTextEntry) ? require('../images/show_password.png') : require('../images/hide_password.png')}/>
         </TouchableOpacity>:
+        
         <Icon size={24} color={color.PRIMARYCOLOR}
         type={'font-awesome'} name={props.imageRight}/>}
+        
         errorStyle={{ color: color.RED }}
         errorMessage={(props.bolError)?props.strError:''}
         editable={props.editable}
