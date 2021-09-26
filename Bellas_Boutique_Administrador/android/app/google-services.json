@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "438125694594",
+    "project_id": "bellas-boutique-app",
+    "storage_bucket": "bellas-boutique-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:438125694594:android:c12668247f06c587222e9b",
+        "android_client_info": {
+          "package_name": "com.bellasboutiqueadministrador"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "438125694594-3l0ufd7gr8u75e2compuomhdbm2kn0mc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIOYmBtRaTs27nsrFbIGg7GGljJ5CwOPw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "438125694594-3l0ufd7gr8u75e2compuomhdbm2kn0mc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -10,9 +10,9 @@ npx create-react-native-app Bellas_Boutique_Cliente // crea el proyecto de la ap
 cd Bellas_Boutique_Cliente // ruta a proyecto app cliente
 expo start // inicia la simulacion de expo
 
-npm install @react-navigation/native*
-expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view*
-npm install @react-navigation/stack --force*
+npm install @react-navigation/native
+expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
+npm install @react-navigation/stack --force
 // espera
 
 npm i --save @react-native-community/async-storage*
@@ -21,6 +21,6 @@ npm i --save react-native-elements*
 npm i --save react-native-snackbar*
 npm i --save react-native-vector-icons*
 
-npm i firebase*
-npm add @react-native-firebase/firestore*
+npm i firebase
+npm add @react-native-firebase/firestore
 --------------------------------------------------

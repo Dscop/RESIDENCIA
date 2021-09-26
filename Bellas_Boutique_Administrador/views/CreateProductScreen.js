@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
-import {View, Button, TextInput, ScrollView, StyleSheet} from 'react-native'
+import {View, Text, Button, TextInput, ScrollView, StyleSheet} from 'react-native'
 import { Value } from 'react-native-reanimated';
-//import firebase from '../Database/firebase'
+import firebase from '../database/firebase'
 
 const CreateProductScreen = (props) => {
 
@@ -51,54 +51,63 @@ const CreateProductScreen = (props) => {
     return (
         <ScrollView StyleSheet={styles.container}>
             <View styles={styles.inputGroup}>
-                <TextInput placeholder="Nombre del articulo" 
+                <Text>Nombre del articulo</Text>
+                <TextInput placeholder="" 
                 onChangeText = {(Value) => handleChangeText('nombre', Value )}            
                 />
             </View>
             <View styles={styles.inputGroup}>
-                <TextInput placeholder="Descripcion del articulo" 
+                <Text>"Descricion del articulo"</Text>
+                <TextInput placeholder="" 
                 onChangeText = {(Value) => handleChangeText('descripcion', Value )}            
                 />
             </View>
             <View styles={styles.inputGroup}>
-                <TextInput placeholder="Categoria del articulo" 
+                <Text>"Categoria del articulo"</Text>
+                <TextInput placeholder="" 
                 onChangeText = {(Value) => handleChangeText('categoria', Value )}            
                 />
             </View>
             <View styles={styles.inputGroup}>
-                <TextInput placeholder="Precio del articulo" 
+                <Text>"Precio del articulo"</Text>
+                <TextInput placeholder="" 
                 onChangeText = {(Value) => handleChangeText('precio', Value )}            
                 />
             </View>
             <View styles={styles.inputGroup}>
-                <TextInput placeholder="Color del articulo" 
+                <Text>"Color del articulo"</Text>
+                <TextInput placeholder="" 
                 onChangeText = {(Value) => handleChangeText('color', Value )}            
                 />
             </View>
             <View styles={styles.inputGroup}>
-                <TextInput placeholder="Inventario del articulo" 
+                <Text>"Inventario del articulo"</Text>
+                <TextInput placeholder="" 
                 onChangeText = {(Value) => handleChangeText('inventario', Value )}            
                 />
             </View>
             <View styles={styles.inputGroup}>
-                <TextInput placeholder="Talla del articulo" 
+                <Text>"Talla del articulo"</Text>
+                <TextInput placeholder="" 
                 onChangeText = {(Value) => handleChangeText('talla', Value )}            
                 />
             </View>
             <View styles={styles.inputGroup}>
-                <TextInput placeholder="Marca del articulo" 
+                <Text>"Marca del articulo"</Text>
+                <TextInput placeholder="" 
                 onChangeText = {(Value) => handleChangeText('marca', Value )}            
                 />
             </View>
             <View styles={styles.inputGroup}>
-                <TextInput placeholder="Estado del articulo" 
+                <Text>"Estado del articulo"</Text>
+                <TextInput placeholder="" 
                 onChangeText = {(Value) => handleChangeText('estado', Value )}            
                 />
             </View>
             <View>
                 <Button title="Guardar"
-                onPress = {()=> AddNewUser()}
-                //onPress={()=> saveNewUser()}
+                //onPress = {()=> AddNewUser()}
+                onPress={()=> saveNewProduct()}
                 />
             </View>
         </ScrollView>
