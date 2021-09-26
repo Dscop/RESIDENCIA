@@ -15,6 +15,9 @@ expo install react-native-gesture-handler react-native-reanimated react-native-s
 npm install @react-navigation/stack --force
 // espera
 
+npm install react-native-elements
+
+
 npm i --save @react-native-community/async-storage*
 npm i --save @react-native-community/masked-view*
 npm i --save react-native-elements*
