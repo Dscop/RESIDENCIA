@@ -7,6 +7,9 @@ import { StatusBar } from 'expo-status-bar';
 import HomeScreen from './views/HomeScreen';
 import LoginScreen from './views/LoginScreen';
 import CreateUserScreen from './views/CreateUserScreen';
+import PrincipalScreen from './views/PrincipalScreen';
+import DetailScreen from './views/DetailScreen';
+import color from './styles/colors';
 
 const Stack =createStackNavigator()
 
@@ -16,6 +19,8 @@ function MyStack(){
       <Stack.Screen name= "HomeScreen" component ={HomeScreen} options={{title: 'Pantalla de inicio'}} />
       <Stack.Screen name= "LoginScreen" component ={LoginScreen} options={{title: 'inicio de sesion'}} />
       <Stack.Screen name= "CreateUserScreen" component= {CreateUserScreen} options={{title: 'Creacion de cuenta'}}/>
+      <Stack.Screen name= "PrincipalScreen" component= {PrincipalScreen} options={{title: 'Pantalla principal'}}/>
+      <Stack.Screen name= "DetailScreen" component= {DetailScreen} options={{title: 'Detalle del producto'}}/>
     </Stack.Navigator>
   )
 }
