@@ -13,8 +13,8 @@ const Stack =createStackNavigator()
 function MyStack(){
   return(
     <Stack.Navigator>
-      <Stack.Screen name= "CreateProductScreen" component ={CreateProductScreen} options={{title: 'Insertar nuevo articulo'}} />
-      
+      <Stack.Screen name= "ProductList" component ={ProductList} options={{title: 'Lista de articulos'}} />
+      <Stack.Screen name= "CreateProductScreen" component ={CreateProductScreen} options={{title: 'Insertar nuevo articulo'}} />      
     </Stack.Navigator>
   )
 }

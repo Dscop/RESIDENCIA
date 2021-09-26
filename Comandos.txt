@@ -21,6 +21,7 @@ npm i --save react-native-elements*
 npm i --save react-native-snackbar*
 npm i --save react-native-vector-icons*
 
-npm i firebase
+npm i firebase --force
+expo install firebase
 npm add @react-native-firebase/firestore
 --------------------------------------------------
