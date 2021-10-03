@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
@@ -9,13 +10,13 @@ import LoginScreen from './views/LoginScreen';
 import CreateUserScreen from './views/CreateUserScreen';
 import PrincipalScreen from './views/PrincipalScreen';
 import DetailScreen from './views/DetailScreen';
-import color from './styles/colors';
+import COLORS from './styles/colors';
 
 const Stack =createStackNavigator()
 
 function MyStack(){
   return(
-    <Stack.Navigator>
+    <Stack.Navigator /*screenOptions={{header: () => null}}*/>
       <Stack.Screen name= "HomeScreen" component ={HomeScreen} options={{title: 'Pantalla de inicio'}} />
       <Stack.Screen name= "LoginScreen" component ={LoginScreen} options={{title: 'inicio de sesion'}} />
       <Stack.Screen name= "CreateUserScreen" component= {CreateUserScreen} options={{title: 'Creacion de cuenta'}}/>
@@ -28,6 +29,7 @@ function MyStack(){
 function App() {
   return (
     <NavigationContainer>
+      <StatusBar barStyle="dark-content" backgroundColor={COLORS.white} />
       <MyStack/>
     </NavigationContainer>
   );

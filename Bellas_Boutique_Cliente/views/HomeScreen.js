@@ -26,7 +26,7 @@ const HomeScreen = (props) => {
         </View>
         <View>
             <TouchableOpacity>
-                <Text style={[loginStyles.txtTransparent, {textDecorationLine: 'underline'}]}>En otro momento</Text>
+                <Text style={[loginStyles.txtTransparent, {textDecorationLine: 'underline'}]} onPress={() => props.navigation.navigate("PrincipalScreen")}>En otro momento</Text>
             </TouchableOpacity>
         </View>
         </View>
