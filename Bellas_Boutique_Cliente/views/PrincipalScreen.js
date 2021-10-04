@@ -37,11 +37,11 @@ const PrincipalScreen = ({navigation}) => {
       );
     };
   
-    const Card = ({plant}) => {
+    const Card = ({product}) => {
       return (
         <TouchableOpacity
           activeOpacity={0.8}
-          onPress={() => navigation.navigate('Details', plant)}>
+          onPress={() => navigation.navigate('DetailScreen', product)}>
           <View style={style.card}>
             <View style={{alignItems: 'flex-end'}}>
               <View
@@ -51,14 +51,14 @@ const PrincipalScreen = ({navigation}) => {
                   borderRadius: 20,
                   justifyContent: 'center',
                   alignItems: 'center',
-                  backgroundColor: plant.like
+                  backgroundColor: product.like
                     ? 'rgba(245, 42, 42,0.2)'
                     : 'rgba(0,0,0,0.2) ',
                 }}>
                 <Icon
                   name="favorite"
                   size={18}
-                  color={plant.like ? COLORS.red : COLORS.black}
+                  color={product.like ? COLORS.red : COLORS.dark}
                 />
               </View>
             </View>
@@ -69,13 +69,13 @@ const PrincipalScreen = ({navigation}) => {
                 alignItems: 'center',
               }}>
               <Image
-                source={plant.img}
+                source={product.img}
                 style={{flex: 1, resizeMode: 'contain'}}
               />
             </View>
   
             <Text style={{fontWeight: 'bold', fontSize: 17, marginTop: 10}}>
-              {plant.name}
+              {product.name}
             </Text>
             <View
               style={{
@@ -84,13 +84,13 @@ const PrincipalScreen = ({navigation}) => {
                 marginTop: 5,
               }}>
               <Text style={{fontSize: 19, fontWeight: 'bold'}}>
-                ${plant.price}
+                ${product.price}
               </Text>
               <View
                 style={{
                   height: 25,
                   width: 25,
-                  backgroundColor: COLORS.green,
+                  backgroundColor: COLORS.salmon,
                   borderRadius: 5,
                   justifyContent: 'center',
                   alignItems: 'center',
@@ -105,13 +105,14 @@ const PrincipalScreen = ({navigation}) => {
         </TouchableOpacity>
       );
     };
+
     return (
       <SafeAreaView
         style={{flex: 1, paddingHorizontal: 20, backgroundColor: COLORS.white}}>
         <View style={style.header}>
           <View>
             <Text style={{fontSize: 25, fontWeight: 'bold'}}>Bienvenido a</Text>
-            <Text style={{fontSize: 38, color: COLORS.green, fontWeight: 'bold'}}>
+            <Text style={{fontSize: 38, color: COLORS.salmon, fontWeight: 'bold'}}>
               Bellas Boutique
             </Text>
           </View>
@@ -137,7 +138,7 @@ const PrincipalScreen = ({navigation}) => {
           numColumns={2}
           data={products}
           renderItem={({item}) => {
-            return <Card plant={item} />;
+            return <Card product={item} />;
           }}
         />
       </SafeAreaView>
@@ -154,10 +155,10 @@ const style = StyleSheet.create({
     },
     categoryText: {fontSize: 16, color: 'grey', fontWeight: 'bold'},
     categoryTextSelected: {
-      color: COLORS.green,
+      color: COLORS.salmon,
       paddingBottom: 5,
       borderBottomWidth: 2,
-      borderColor: COLORS.green,
+      borderColor: COLORS.salmon,
     },
     card: {
       height: 225,
@@ -192,7 +193,7 @@ const style = StyleSheet.create({
       height: 50,
       width: 50,
       borderRadius: 10,
-      backgroundColor: COLORS.green,
+      backgroundColor: COLORS.salmon,
       justifyContent: 'center',
       alignItems: 'center',
     },

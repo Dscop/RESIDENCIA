@@ -4,9 +4,9 @@ export default {
     red: '#F52A2A',
     light: '#F1F1F1',
     green: '#00B761',
-    PRIMARYCOLOR:'#377bff',
+    PRIMARYCOLOR:'#ff00ff',
     SECONDARYCOLOR:'#ff5204',
-    LIGHTPRIMARYCOLOR:'#90caf9',
+    LIGHTPRIMARYCOLOR:'#ff00ff',
     LIGHTSECONDARYCOLOR:'#ffcc80',
     WHITE: '#FFF',
     SECONDARY: '#FFF',
@@ -20,4 +20,6 @@ export default {
     ORANGE: '#ff5204',
     YELLOW1: '#FBC02D',
     YELLOW2: '#FFEB3B',
+    salmon:	'#fa8072',
+    pink:	'#ffc0cb'
 };

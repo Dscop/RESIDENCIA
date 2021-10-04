@@ -16,7 +16,7 @@ export default function LoginScreen(props){
         return(
             <ScrollView>
             <View style={[loginStyles.container, {padding:50}]}>
-                <StatusBar backgroundColor={color.BLUE} translucent={true}/>
+                <StatusBar backgroundColor={color.pink} translucent={true}/>
                 <View style={loginStyles.logo}>
                     <Image source={require('../images/logo2.jpg')}
                     style={{height:250, width:250}}/>
@@ -32,7 +32,7 @@ export default function LoginScreen(props){
                 </View>
                 <View style={loginStyles.btnTransparent}>
                     <TouchableOpacity>
-                        <Text style={[loginStyles.btntxt, {color: color.BLUE}]}>Registrarse</Text>
+                        <Text style={[loginStyles.btntxt, {color: color.pink}]}>Registrarse</Text>
                     </TouchableOpacity>
                 </View>
                 <View>

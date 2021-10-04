@@ -29,13 +29,13 @@ const loginStyles = StyleSheet.create({
         width: 280,
         marginTop:40,
         marginBottom: 20,
-        backgroundColor: color.BLUE,
+        backgroundColor: color.pink,
         borderRadius: 60
     },
 
     btnTransparent: {
         backgroundColor: 'rgba(52, 52, 52, 0)',
-        borderColor: color.BLUE,
+        borderColor: color.pink,
         width: 280,
         borderWidth: 2,
         marginBottom: 20,

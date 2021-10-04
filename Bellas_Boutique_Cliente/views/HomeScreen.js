@@ -9,7 +9,7 @@ const HomeScreen = (props) => {
     return(
         <ScrollView StyleSheet={styles.container}>
         <View style={[loginStyles.container, {padding:50}]}>
-        <StatusBar backgroundColor={color.BLUE} translucent={true}/>
+        <StatusBar backgroundColor={color.pink} translucent={true}/>
         <View style={loginStyles.logo}>
             <Image source={require('../images/logo.jpg')}
             style={{height:250, width:250}}/>
@@ -21,7 +21,7 @@ const HomeScreen = (props) => {
         </View>
         <View style={loginStyles.btnTransparent}>
             <TouchableOpacity>
-                <Text style={[loginStyles.btntxt, {color: color.BLUE}]} onPress={() => props.navigation.navigate("CreateUserScreen")}>Registrarme</Text>
+                <Text style={[loginStyles.btntxt, {color: color.pink}]} onPress={() => props.navigation.navigate("CreateUserScreen")}>Registrarme</Text>
             </TouchableOpacity>
         </View>
         <View>
