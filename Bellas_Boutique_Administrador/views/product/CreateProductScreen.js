@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import {View, Text, Button, TextInput, ScrollView, StyleSheet} from 'react-native'
 import { Value } from 'react-native-reanimated';
-import firebase from '../database/firebase'
+import firebase from '../../database/firebase'
 
 const CreateProductScreen = (props) => {
 

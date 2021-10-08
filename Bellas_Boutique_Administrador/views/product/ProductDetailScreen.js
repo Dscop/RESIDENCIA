@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import {View, Text, Button, TextInput, ScrollView, StyleSheet, Alert} from 'react-native'
-import firebase from '../database/firebase'
+import firebase from '../../database/firebase'
 
 const ProductDetailScreen = (props) => {
 
