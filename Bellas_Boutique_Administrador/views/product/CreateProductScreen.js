@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import {View, Text, Button, TextInput, ScrollView, StyleSheet} from 'react-native'
+import {View, Text, Button, TextInput, ScrollView, StyleSheet, Picker} from 'react-native'
 import { Value } from 'react-native-reanimated';
 import firebase from '../../database/firebase'
 
@@ -17,8 +17,11 @@ const CreateProductScreen = (props) => {
         estado: ""
     });
 
+    const [selectedValue, setSelectedValue] = useState("");
+
     const handleChangeText = (nombre, value) => {
         setState({...state, [nombre]:value})
+        setSelectedValue(value)
     }
 
     const saveNewProduct = async () => {
@@ -51,55 +54,74 @@ const CreateProductScreen = (props) => {
     return (
         <ScrollView StyleSheet={styles.container}>
             <View styles={styles.inputGroup}>
-                <Text>Nombre del articulo</Text>
+                <Text>Nombre del articulo:</Text>
                 <TextInput placeholder="" 
                 onChangeText = {(Value) => handleChangeText('nombre', Value )}            
                 />
             </View>
             <View styles={styles.inputGroup}>
-                <Text>"Descricion del articulo"</Text>
+                <Text>Descripcion:</Text>
                 <TextInput placeholder="" 
                 onChangeText = {(Value) => handleChangeText('descripcion', Value )}            
                 />
             </View>
             <View styles={styles.inputGroup}>
-                <Text>"Categoria del articulo"</Text>
+                <Text>Categoria:</Text>
                 <TextInput placeholder="" 
                 onChangeText = {(Value) => handleChangeText('categoria', Value )}            
                 />
             </View>
             <View styles={styles.inputGroup}>
-                <Text>"Precio del articulo"</Text>
+                <Text>Precio:</Text>
                 <TextInput placeholder="" 
                 onChangeText = {(Value) => handleChangeText('precio', Value )}            
                 />
             </View>
             <View styles={styles.inputGroup}>
-                <Text>"Color del articulo"</Text>
-                <TextInput placeholder="" 
-                onChangeText = {(Value) => handleChangeText('color', Value )}            
-                />
+                <Text>Color:</Text>
+                <Picker 
+                selectedValue={state.color}
+                style={{ height: 50, width: 150 }}
+                onValueChange = {(Value) => handleChangeText('color', Value )}
+                >
+                    <Picker.Item label="Selecciona un color" value=""></Picker.Item>
+                    <Picker.Item label="Rojo" value="Rojo"></Picker.Item>
+                    <Picker.Item label="Blanco" value="Blanco"></Picker.Item>
+                    <Picker.Item label="Negro" value="Negro"></Picker.Item>
+                    <Picker.Item label="Rosa" value="Rosa"></Picker.Item>
+                    <Picker.Item label="Morado" value="Morado"></Picker.Item>
+                </Picker>
             </View>
             <View styles={styles.inputGroup}>
-                <Text>"Inventario del articulo"</Text>
+                <Text>Inventario:</Text>
                 <TextInput placeholder="" 
                 onChangeText = {(Value) => handleChangeText('inventario', Value )}            
                 />
             </View>
             <View styles={styles.inputGroup}>
-                <Text>"Talla del articulo"</Text>
-                <TextInput placeholder="" 
-                onChangeText = {(Value) => handleChangeText('talla', Value )}            
-                />
+                <Text>Talla:</Text>
+                <Picker 
+                selectedValue={state.talla}
+                style={{ height: 50, width: 150 }}
+                onValueChange = {(Value) => handleChangeText('talla', Value )}
+                >
+                    <Picker.Item label="Selecciona una talla" value=""></Picker.Item>
+                    <Picker.Item label="Extra Chica" value="Extra Chica"></Picker.Item>
+                    <Picker.Item label="Chica" value="Chica"></Picker.Item>
+                    <Picker.Item label="Mediana" value="Mediana"></Picker.Item>
+                    <Picker.Item label="Grande" value="Grande"></Picker.Item>
+                    <Picker.Item label="Extra Grande" value="Extra Grande"></Picker.Item>
+                </Picker>
+                
             </View>
             <View styles={styles.inputGroup}>
-                <Text>"Marca del articulo"</Text>
+                <Text>Marca:</Text>
                 <TextInput placeholder="" 
                 onChangeText = {(Value) => handleChangeText('marca', Value )}            
                 />
             </View>
             <View styles={styles.inputGroup}>
-                <Text>"Estado del articulo"</Text>
+                <Text>Estado:</Text>
                 <TextInput placeholder="" 
                 onChangeText = {(Value) => handleChangeText('estado', Value )}            
                 />
@@ -118,6 +140,8 @@ const styles =StyleSheet.create({
     container: {
         flex: 1,
         padding: 35,
+        alignItems: "center",
+        justifyContent: 'center',
     },
     inputGroup: {
         flex: 1,
@@ -125,6 +149,8 @@ const styles =StyleSheet.create({
         marginBottom: 15,
         borderBottomWidth: 1,
         borderBottomColor: '#cccccc',
+        alignItems: "center",
+        justifyContent: 'center',
     },
 })
 
