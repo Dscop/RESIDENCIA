@@ -18,6 +18,8 @@ const ProductDetailScreen = (props) => {
     });
 
     const [selectedValue, setSelectedValue] = useState("");
+    const [marcas, setMarcas] = useState([]);
+    const [categorias, setCategorias] = useState([]);
 
     const handleChangeText = (nombre, x) => {
         setProducto({...producto, [nombre]:x})
@@ -54,7 +56,33 @@ const ProductDetailScreen = (props) => {
 
       useEffect(() => {
         getProductoById(props.route.params.productoId);
-      }, []);
+     
+        firebase.conexion.collection("marcas").onSnapshot((querySnapshot) => {
+            const marcas = [];
+            querySnapshot.docs.forEach((doc) => {
+              const { nombre } = doc.data();
+              marcas.push({
+                id: doc.id,
+                nombre
+              });
+            });
+            setMarcas(marcas);
+          });
+        
+        firebase.conexion.collection("categorias").onSnapshot((querySnapshot) => {
+            const categorias = [];
+            querySnapshot.docs.forEach((doc) => {
+              const { nombre } = doc.data();
+              categorias.push({
+                id: doc.id,
+                nombre
+              });
+            });
+            setCategorias(categorias);
+          });
+
+
+    }, []);
 
       const updateProducto = async (prod) => {
         try {
@@ -123,10 +151,19 @@ const ProductDetailScreen = (props) => {
             </View>
             <View styles={styles.inputGroup}>
                 <Text>Categoria:</Text>
-                <TextInput placeholder="" 
+                <Picker 
+                selectedValue={producto.categoria}
                 value = {producto.categoria}
-                onChangeText = {(x) => handleChangeText('categoria', x )}            
-                />
+                style={{ height: 50, width: 150 }} 
+                onValueChange = {(x) => handleChangeText('categoria', x )}
+                >
+                    <Picker.Item label="Selecciona una categoria" value=""></Picker.Item>
+                    {categorias.map((categoria) => {
+                        return(
+                        <Picker.Item label={categoria.nombre} value={categoria.nombre}></Picker.Item>
+                        );
+                    })}
+                </Picker>
             </View>
             <View styles={styles.inputGroup}>
                 <Text>Precio:</Text>
@@ -165,7 +202,6 @@ const ProductDetailScreen = (props) => {
                 value = {producto.talla}
                 style={{ height: 50, width: 150 }} 
                 onValueChange = {(x) => handleChangeText('talla', x )}
-
                 >
                     <Picker.Item label="Selecciona una talla" value=""></Picker.Item>
                     <Picker.Item label="Extra Chica" value="Extra Chica"></Picker.Item>
@@ -177,10 +213,19 @@ const ProductDetailScreen = (props) => {
             </View>
             <View styles={styles.inputGroup}>
                 <Text>Marca:</Text>
-                <TextInput placeholder="" 
+                <Picker 
+                selectedValue={producto.marca}
                 value = {producto.marca}
-                onChangeText = {(x) => handleChangeText('marca', x )}            
-                />
+                style={{ height: 50, width: 150 }} 
+                onValueChange = {(x) => handleChangeText('marca', x )}
+                >
+                    <Picker.Item label="Selecciona una marca" value=""></Picker.Item>
+                    {marcas.map((marca) => {
+                        return(
+                        <Picker.Item label={marca.nombre} value={marca.nombre}></Picker.Item>
+                        );
+                    })}
+                </Picker>
             </View>
             <View styles={styles.inputGroup}>
                 <Text>Estado:</Text>

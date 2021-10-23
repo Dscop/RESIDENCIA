@@ -66,11 +66,15 @@ const ProductList = (props) => {
             />
             <ListItem.Content>
               <ListItem.Title>{producto.nombre}</ListItem.Title>
-              <ListItem.Subtitle>{producto.color}</ListItem.Subtitle>
-              <ListItem.Subtitle>{producto.talla}</ListItem.Subtitle>
-              <ListItem.Subtitle>{producto.marca}</ListItem.Subtitle>
-              <ListItem.Subtitle>{producto.inventario}</ListItem.Subtitle>
+              <ListItem.Subtitle>Color: {producto.color}</ListItem.Subtitle>
+              <ListItem.Subtitle>Talla: {producto.talla}</ListItem.Subtitle>
+              <ListItem.Subtitle>Marca: {producto.marca}</ListItem.Subtitle>
+              <ListItem.Subtitle>Inventario: {producto.inventario}</ListItem.Subtitle>
             </ListItem.Content>
+            <Button
+            onPress={() => props.navigation.navigate("CreateProductScreen")}
+            title="Agregar descuento"
+            />
           </ListItem>
         );
       })}
