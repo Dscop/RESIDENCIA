@@ -1,20 +1,33 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList, Image, Dimensions,} from 'react-native';
+import {View, Text, StyleSheet, FlatList, Image, Dimensions} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+import { useNavigation } from '@react-navigation/core'
+
+import { auth } from '../database/firebase'
 
 import COLORS from '../styles/colors';
 import products from '../consts/products';
 
 const width = Dimensions.get('window').width / 2 - 30;
 
-const PrincipalScreen = ({navigation}) => {
-
+const PrincipalScreen = (props) => {
+    const navigation = useNavigation()
+    
     const [catergoryIndex, setCategoryIndex] = React.useState(0);
 
     const categories = ['POPULAR', 'NOVEDAD', 'REBAJAS', 'ESTILO'];
+
+    const handleSignOut = () => {
+      auth
+        .signOut()
+        .then(() => {
+          navigation.replace("HomeScreen")
+        })
+        .catch(error => alert(error.message))
+    }
   
     const CategoryList = () => {
       return (
@@ -111,6 +124,7 @@ const PrincipalScreen = ({navigation}) => {
         style={{flex: 1, paddingHorizontal: 20, backgroundColor: COLORS.white}}>
         <View style={style.header}>
           <View>
+            <Text style={{fontSize: 25, fontWeight: 'bold'}}>{auth.currentUser?.email}</Text>
             <Text style={{fontSize: 25, fontWeight: 'bold'}}>Bienvenido a</Text>
             <Text style={{fontSize: 38, color: COLORS.salmon, fontWeight: 'bold'}}>
               Bellas Boutique
@@ -141,6 +155,12 @@ const PrincipalScreen = ({navigation}) => {
             return <Card product={item} />;
           }}
         />
+          <TouchableOpacity
+            onPress={handleSignOut}
+            style={style.button}
+          >
+            <Text style={style.buttonText}>Sign out</Text>
+          </TouchableOpacity>
       </SafeAreaView>
     );
   
@@ -196,6 +216,19 @@ const style = StyleSheet.create({
       backgroundColor: COLORS.salmon,
       justifyContent: 'center',
       alignItems: 'center',
+    },
+    button: {
+      backgroundColor: '#0782F9',
+      width: '60%',
+      padding: 15,
+      borderRadius: 10,
+      alignItems: 'center',
+      marginTop: 40,
+    },
+    buttonText: {
+      color: 'white',
+      fontWeight: '700',
+      fontSize: 16,
     },
   });
 
