@@ -72,7 +72,12 @@ const ProductList = (props) => {
               <ListItem.Subtitle>Inventario: {producto.inventario}</ListItem.Subtitle>
             </ListItem.Content>
             <Button
-            onPress={() => props.navigation.navigate("CreateProductScreen")}
+            onPress={() => {props.navigation.navigate("CreateDiscountScreen", {
+              productoId: producto.id,
+              productoNombre: producto.nombre,
+              productoPrecio: producto.precio
+            });
+          }}
             title="Agregar descuento"
             />
           </ListItem>

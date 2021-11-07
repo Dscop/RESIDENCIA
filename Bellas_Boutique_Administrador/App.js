@@ -20,6 +20,8 @@ import CategoryList from './views/category/CategoryList';
 import CategoryDetailScreen from './views/category/CategoryDetailScreen';
 import CreateCategoryScreen from './views/category/CreateCategoryScreen';
 
+import CreateDiscountScreen from './views/discount/CreateDiscountScreen';
+
 import COLORS from './styles/colors';
 
 const Stack =createStackNavigator()
@@ -40,6 +42,8 @@ function MyStack(){
       <Stack.Screen name= "CategoryList" component ={CategoryList} options={{title: 'Lista de categorias'}} />
       <Stack.Screen name= "CategoryDetailScreen" component ={CategoryDetailScreen} options={{title: 'Detalle de la categoria'}} />
       <Stack.Screen name= "CreateCategoryScreen" component ={CreateCategoryScreen} options={{title: 'Insertar nueva categoria'}} />
+
+      <Stack.Screen name= "CreateDiscountScreen" component ={CreateDiscountScreen} options={{title: 'Insertar nuevo descuento'}} />
     </Stack.Navigator>
   )
 }
