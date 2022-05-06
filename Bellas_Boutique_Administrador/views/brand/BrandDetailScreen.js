@@ -78,8 +78,8 @@ const BrandDetailScreen = (props) => {
         }
 
     return (
-        <ScrollView StyleSheet={styles.container}>
-            <View styles={styles.inputGroup}>
+        <ScrollView style={styles.container}>
+            <View style={styles.inputGroup}>
                 <Text>Nombre de la marca</Text>
                 <TextInput placeholder=""
                 value = {marca.nombre} 
@@ -108,9 +108,10 @@ const styles =StyleSheet.create({
     inputGroup: {
         flex: 1,
         padding: 0,
-        marginBottom: 15,
+        marginBottom: 5,
         borderBottomWidth: 1,
         borderBottomColor: '#cccccc',
+        justifyContent: 'center',
     },
 })
 

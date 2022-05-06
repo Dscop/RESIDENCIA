@@ -1,9 +1,29 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState, useEffect, Component} from 'react'
 import {View, Text, Button, TextInput, ScrollView, StyleSheet, Picker, Alert} from 'react-native'
-import { Value } from 'react-native-reanimated';
-import firebase from '../../database/firebase'
+import firebase from '../../database/firebase';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import DatePicker from '@react-native-community/datetimepicker';
 
 const CreateDiscountScreen = (props) => {
+
+    const [date, setDate] = useState(new Date());
+    const [mode, setMode] = useState('date');
+    const [show, setShow] = useState(false);
+  
+      const onChange = (event, selectedDate) => {
+          const currentDate = selectedDate || date;
+          setShow(Platform.OS === 'ios');
+          setDate(currentDate);
+        };
+      
+        const showMode = (currentMode) => {
+          setShow(true);
+          setMode(currentMode);
+        };
+      
+        const showDatepicker = () => {
+          showMode('date');
+        };
 
     const [productoD, setProductoD]= useState ({
         id: "",
@@ -11,14 +31,14 @@ const CreateDiscountScreen = (props) => {
         precio: ""
     });
 
-    const [state, setState]= useState ({
+    const [nstate, setNState]= useState ({
         descuento: "",
         fecha_inicio: "",
         fecha_fin: ""
     });
 
     const handleChangeText = (descuento, value) => {
-        setState({...state, [descuento]:value})
+        setNState({...nstate, [descuento]:value})
         setProductoD({...productoD, [descuento]:value})
     }
 
@@ -48,58 +68,82 @@ const CreateDiscountScreen = (props) => {
     }, []);
 
     const saveNewDiscount = async () => {
-        if(state.descuento==='' || state.fecha_inicio==='' || state.fecha_fin===''){
+        if( productoD.id==='' || productoD.nombre==='' || productoD.precio==='' || nstate.descuento==='' || nstate.fecha_inicio==='' || nstate.fecha_fin===''){
             alert('No dejar campos vacios')
         }else{
             await firebase.conexion.collection('descuentos') .add({
-                id: productoD.id,
-                nombre: productoD.nombre,
+                id_articulo: productoD.id,
+                nombre_articulo: productoD.nombre,
                 precio: productoD.precio,
-                descuento: state.descuento,
-                fecha_inicio: state.fecha_inicio,
-                fecha_fin: state.fecha_fin
+                descuento: nstate.descuento,
+                fecha_inicio: nstate.fecha_inicio,
+                fecha_fin: nstate.fecha_fin
             })
             props.navigation.navigate('ProductList');
         }
     }
 
     return (
-        <ScrollView StyleSheet={styles.container}>
-            <View styles={styles.inputGroup}>
+        <ScrollView style={styles.container}>
+            <View style={styles.inputGroup}>
                 <Text>Id del articulo:</Text>
                 <TextInput placeholder=""
                 value = {productoD.id} 
                 onChangeText = {(Value) => handleChangeText('id', Value )}            
                 />
             </View>
-            <View styles={styles.inputGroup}>
+            <View style={styles.inputGroup}>
                 <Text>Nombre del articulo:</Text>
                 <TextInput placeholder="" 
                 value = {productoD.nombre}
                 onChangeText = {(Value) => handleChangeText('nombre', Value )}            
                 />
             </View>
-            <View styles={styles.inputGroup}>
+            <View style={styles.inputGroup}>
                 <Text>Precio:</Text>
                 <TextInput placeholder="" 
                 value = {productoD.precio}
                 onChangeText = {(Value) => handleChangeText('precio', Value )}            
                 />
             </View>
-            <View styles={styles.inputGroup}>
+            <View style={styles.inputGroup}>
                 <Text>Porcentaje de descuento:</Text>
                 <TextInput placeholder="" 
                 onChangeText = {(Value) => handleChangeText('descuento', Value )}            
                 />
             </View>
-            <View styles={styles.inputGroup}>
+            <View style={styles.inputGroup}>
                 <Text>Fecha de inicio:</Text>
+                <Icon name="book-online" size={28} onPress={showDatepicker} />
+                {show && (
+                    <DatePicker
+                    testID="datePicker"
+                    value={date}
+                    mode={mode}
+                    is24Hour={true}
+                    display="default"
+                    onChange={onChange}
+                    color="red"
+                    />
+                )}
                 <TextInput placeholder="" 
                 onChangeText = {(Value) => handleChangeText('fecha_inicio', Value )}            
                 />
             </View>
-            <View styles={styles.inputGroup}>
+            <View style={styles.inputGroup}>
                 <Text>Fecha de fin:</Text>
+                {/*<Icon name="calendar-today" size={28} onPress={showDatepicker} />
+                {show && (
+                    <DatePicker
+                    testID="datePicker"
+                    value={date}
+                    mode={mode}
+                    is24Hour={true}
+                    display="default"
+                    onChange={onChange}
+                    color="red"
+                    />
+                )}*/}
                 <TextInput placeholder="" 
                 onChangeText = {(Value) => handleChangeText('fecha_fin', Value )}            
                 />
@@ -117,16 +161,13 @@ const styles =StyleSheet.create({
     container: {
         flex: 1,
         padding: 35,
-        alignItems: "center",
-        justifyContent: 'center',
     },
     inputGroup: {
         flex: 1,
         padding: 0,
-        marginBottom: 15,
+        marginBottom: 5,
         borderBottomWidth: 1,
         borderBottomColor: '#cccccc',
-        alignItems: "center",
         justifyContent: 'center',
     },
 })

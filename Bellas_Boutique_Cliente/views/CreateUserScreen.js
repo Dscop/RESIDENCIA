@@ -1,27 +1,14 @@
 import { useNavigation } from '@react-navigation/core'
 import React,{useState, useEffect} from 'react'
-import {View, Button, TextInput, ScrollView, StyleSheet, KeyboardAvoidingView, Text, TouchableOpacity} from 'react-native'
-import { Value } from 'react-native-reanimated';
+import {View, TextInput, ScrollView, StyleSheet, KeyboardAvoidingView, Text, TouchableOpacity} from 'react-native'
 import { auth } from '../database/firebase'
 
-import firebase from '../database/firebase'
-
 const CreateUserScreen = (props) =>{
-
-    const [state, setState]= useState ({
-        name: "",
-        mail: "",
-        phone: "",
-    });
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const navigation = useNavigation()
-
-    const handleChangeText = (name, value) => {
-        setState({...state, [name]:value})
-    }
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
@@ -44,12 +31,12 @@ const CreateUserScreen = (props) =>{
       }
     
     return (
-        <ScrollView StyleSheet={styles.container}>
+        <ScrollView style={styles.container}>
             <KeyboardAvoidingView
             style={styles.container}
                 behavior="padding"
                 >
-            <View styles={styles.inputContainer}>
+            <View style={styles.inputContainer}>
                 <TextInput 
                 placeholder="Email" 
                 value={email}
@@ -57,7 +44,7 @@ const CreateUserScreen = (props) =>{
                 style={styles.input}           
                 />
             </View>
-            <View styles={styles.inputContainer}>
+            <View style={styles.inputContainer}>
                 <TextInput 
                 placeholder="Contraseña" 
                 value={password}
@@ -83,8 +70,6 @@ const styles =StyleSheet.create({
     container: {
         flex: 1,
         padding: 35,
-        justifyContent: 'center',
-        alignItems: 'center',
     },
     inputGroup: {
         flex: 1,

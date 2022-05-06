@@ -1,5 +1,6 @@
 {
   "expo": {
+    "userInterfaceStyle": "automatic",
     "name": "Bellas_Boutique_Administrador",
     "slug": "Bellas_Boutique_Administrador",
     "version": "1.0.0",

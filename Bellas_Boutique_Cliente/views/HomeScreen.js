@@ -1,13 +1,12 @@
-import React,{useState} from 'react'
-import {View, Button, TextInput, StyleSheet, BackHandler, Text, TouchableOpacity, StatusBar, Image, ScrollView} from 'react-native'
+import React from 'react'
+import {View, StyleSheet, Text, TouchableOpacity, StatusBar, Image, ScrollView} from 'react-native'
 import { loginStyles } from "../styles/styles";
-import MyTextInput from "../components/MyTextInput";
 import color from '../styles/colors';
 
 const HomeScreen = (props) => {
 
     return(
-        <ScrollView StyleSheet={styles.container}>
+        <ScrollView style={styles.container}>
         <View style={[loginStyles.container, {padding:50}]}>
         <StatusBar backgroundColor={color.pink} translucent={true}/>
         <View style={loginStyles.logo}>

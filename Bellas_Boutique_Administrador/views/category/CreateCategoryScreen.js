@@ -24,8 +24,8 @@ const CreateCategoryScreen = (props) => {
     }
 
     return (
-        <ScrollView StyleSheet={styles.container}>
-            <View styles={styles.inputGroup}>
+        <ScrollView style={styles.container}>
+            <View style={styles.inputGroup}>
                 <Text>Nombre de la Categoria</Text>
                 <TextInput placeholder="" 
                 onChangeText = {(Value) => handleChangeText('nombre', Value )}            
@@ -48,9 +48,10 @@ const styles =StyleSheet.create({
     inputGroup: {
         flex: 1,
         padding: 0,
-        marginBottom: 15,
+        marginBottom: 5,
         borderBottomWidth: 1,
         borderBottomColor: '#cccccc',
+        justifyContent: 'center',
     },
 })
 

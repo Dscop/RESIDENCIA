@@ -12,7 +12,7 @@ const ProductList = (props) => {
     firebase.conexion.collection("productos").onSnapshot((querySnapshot) => {
       const productos = [];
       querySnapshot.docs.forEach((doc) => {
-        const { nombre, descripcion, categoria, precio, color, inventario, talla, marca, estado } = doc.data();
+        const { nombre, descripcion, categoria, precio, color, inventario, talla, marca, estado, img } = doc.data();
         productos.push({
           id: doc.id,
           nombre,
@@ -23,7 +23,8 @@ const ProductList = (props) => {
           inventario,
           talla,
           marca,
-          estado
+          estado,
+          img
         });
       });
       setProductos(productos);
@@ -46,13 +47,14 @@ const ProductList = (props) => {
                 productoId: producto.id,
                 productoNombre: producto.nombre,
                 productoDescripcion: producto.descripcion,
-                ProductoCategoria: producto.categoria,
+                productoCategoria: producto.categoria,
                 productoPrecio: producto.precio,
                 productoColor: producto.color,
                 productoInventario: producto.inventario,
                 productoTalla: producto.talla,
                 productoMarca: producto.marca,
-                productoEstado: producto.estado
+                productoEstado: producto.estado,
+                productoImagen: producto.img
               });
             }}
           >
@@ -60,7 +62,7 @@ const ProductList = (props) => {
             <Avatar
               source={{
                 uri:
-                  "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
+                  producto.img,
               }}
               rounded
             />

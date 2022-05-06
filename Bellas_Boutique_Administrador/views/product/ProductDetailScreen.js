@@ -134,22 +134,22 @@ const ProductDetailScreen = (props) => {
         }
 
     return (
-        <ScrollView StyleSheet={styles.container}>
-            <View styles={styles.inputGroup}>
+        <ScrollView style={styles.container}>
+            <View style={styles.inputGroup}>
                 <Text>Nombre del articulo:</Text>
                 <TextInput placeholder=""
                 value = {producto.nombre} 
                 onChangeText = {(x) => handleChangeText('nombre', x )}            
                 />
             </View>
-            <View styles={styles.inputGroup}>
+            <View style={styles.inputGroup}>
                 <Text>Descripcion:</Text>
                 <TextInput placeholder=""
                 value = {producto.descripcion} 
                 onChangeText = {(x) => handleChangeText('descripcion', x )}            
                 />
             </View>
-            <View styles={styles.inputGroup}>
+            <View style={styles.inputGroup}>
                 <Text>Categoria:</Text>
                 <Picker 
                 selectedValue={producto.categoria}
@@ -165,14 +165,14 @@ const ProductDetailScreen = (props) => {
                     })}
                 </Picker>
             </View>
-            <View styles={styles.inputGroup}>
+            <View style={styles.inputGroup}>
                 <Text>Precio:</Text>
                 <TextInput placeholder=""
                 value = {producto.precio} 
                 onChangeText = {(x) => handleChangeText('precio', x )}            
                 />
             </View>
-            <View styles={styles.inputGroup}>
+            <View style={styles.inputGroup}>
                 <Text>Color:</Text>
                 <Picker 
                 selectedValue={producto.color}
@@ -186,16 +186,18 @@ const ProductDetailScreen = (props) => {
                     <Picker.Item label="Negro" value="Negro"></Picker.Item>
                     <Picker.Item label="Rosa" value="Rosa"></Picker.Item>
                     <Picker.Item label="Morado" value="Morado"></Picker.Item>
+                    <Picker.Item label="Azul" value="Azul"></Picker.Item>
+                    <Picker.Item label="Amarillo" value="Amarillo"></Picker.Item>
                 </Picker>
             </View>
-            <View styles={styles.inputGroup}>
+            <View style={styles.inputGroup}>
                 <Text>Inventario:</Text>
                 <TextInput placeholder=""
                 value = {producto.inventario} 
                 onChangeText = {(x) => handleChangeText('inventario', x )}            
                 />
             </View>
-            <View styles={styles.inputGroup}>
+            <View style={styles.inputGroup}>
                 <Text>Talla:</Text>
                 <Picker 
                 selectedValue={producto.talla}
@@ -211,7 +213,7 @@ const ProductDetailScreen = (props) => {
                     <Picker.Item label="Extra Grande" value="Extra Grande"></Picker.Item>
                 </Picker>
             </View>
-            <View styles={styles.inputGroup}>
+            <View style={styles.inputGroup}>
                 <Text>Marca:</Text>
                 <Picker 
                 selectedValue={producto.marca}
@@ -227,7 +229,7 @@ const ProductDetailScreen = (props) => {
                     })}
                 </Picker>
             </View>
-            <View styles={styles.inputGroup}>
+            <View style={styles.inputGroup}>
                 <Text>Estado:</Text>
                 <TextInput placeholder="" 
                 value = {producto.estado}
@@ -252,16 +254,13 @@ const styles =StyleSheet.create({
     container: {
         flex: 1,
         padding: 35,
-        alignItems: "center",
-        justifyContent: 'center',
     },
     inputGroup: {
         flex: 1,
         padding: 0,
-        marginBottom: 15,
+        marginBottom: 5,
         borderBottomWidth: 1,
         borderBottomColor: '#cccccc',
-        alignItems: "center",
         justifyContent: 'center',
     },
 })

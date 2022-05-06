@@ -1,19 +1,47 @@
-import React from 'react';
-import {View, Text, StyleSheet, FlatList, Image, Dimensions} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import {View, Text, StyleSheet, FlatList, Image, Dimensions, Button} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import firebase from "../database/firebase";
 
 import { useNavigation } from '@react-navigation/core'
 
 import { auth } from '../database/firebase'
 
 import COLORS from '../styles/colors';
-import products from '../consts/products';
+//import products from '../consts/products';
 
 const width = Dimensions.get('window').width / 2 - 30;
 
 const PrincipalScreen = (props) => {
+
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    firebase.conexion.collection("productos").onSnapshot((querySnapshot) => {
+      const productos = [];
+      querySnapshot.docs.forEach((doc) => {
+        const { nombre, descripcion, categoria, precio, color, inventario, talla, marca, estado, img } = doc.data();
+        productos.push({
+          id: doc.id,
+          nombre:doc.nombre,
+          descripcion,
+          categoria,
+          precio,
+          color,
+          inventario,
+          talla,
+          marca,
+          estado,
+          img
+        });
+      });
+      setProductos(productos);
+    });
+  }, []);
+
     const navigation = useNavigation()
     
     const [catergoryIndex, setCategoryIndex] = React.useState(0);
@@ -50,11 +78,15 @@ const PrincipalScreen = (props) => {
       );
     };
   
-    const Card = ({product}) => {
+    
+    const Card = productos.map((producto) => {
+      
       return (
+
         <TouchableOpacity
           activeOpacity={0.8}
-          onPress={() => navigation.navigate('DetailScreen', product)}>
+          onPress={() => navigation.navigate('DetailScreen', producto)}>
+
           <View style={style.card}>
             <View style={{alignItems: 'flex-end'}}>
               <View
@@ -64,14 +96,14 @@ const PrincipalScreen = (props) => {
                   borderRadius: 20,
                   justifyContent: 'center',
                   alignItems: 'center',
-                  backgroundColor: product.like
-                    ? 'rgba(245, 42, 42,0.2)'
-                    : 'rgba(0,0,0,0.2) ',
+                  //backgroundColor: producto.like
+                    //? 'rgba(245, 42, 42,0.2)'
+                    //: 'rgba(0,0,0,0.2) ',
                 }}>
                 <Icon
                   name="favorite"
                   size={18}
-                  color={product.like ? COLORS.red : COLORS.dark}
+                  //color={producto.like ? COLORS.red : COLORS.dark}
                 />
               </View>
             </View>
@@ -82,13 +114,13 @@ const PrincipalScreen = (props) => {
                 alignItems: 'center',
               }}>
               <Image
-                source={product.img}
+                source={producto.img}
                 style={{flex: 1, resizeMode: 'contain'}}
               />
             </View>
   
             <Text style={{fontWeight: 'bold', fontSize: 17, marginTop: 10}}>
-              {product.name}
+              {producto.nombre}
             </Text>
             <View
               style={{
@@ -97,7 +129,7 @@ const PrincipalScreen = (props) => {
                 marginTop: 5,
               }}>
               <Text style={{fontSize: 19, fontWeight: 'bold'}}>
-                ${product.price}
+                ${producto.precio}
               </Text>
               <View
                 style={{
@@ -117,7 +149,8 @@ const PrincipalScreen = (props) => {
           </View>
         </TouchableOpacity>
       );
-    };
+    });
+  
 
     return (
       <SafeAreaView
@@ -130,7 +163,7 @@ const PrincipalScreen = (props) => {
               Bellas Boutique
             </Text>
           </View>
-          <Icon name="shopping-cart" size={28} />
+          <Icon name="shopping-cart" size={28} onPress={() => navigation.navigate('CartScreen')}/>
         </View>
         <View style={{marginTop: 30, flexDirection: 'row'}}>
           <View style={style.searchContainer}>
@@ -142,6 +175,8 @@ const PrincipalScreen = (props) => {
           </View>
         </View>
         <CategoryList />
+        
+          
         <FlatList
           columnWrapperStyle={{justifyContent: 'space-between'}}
           showsVerticalScrollIndicator={false}
@@ -150,11 +185,13 @@ const PrincipalScreen = (props) => {
             paddingBottom: 50,
           }}
           numColumns={2}
-          data={products}
+          data={productos}
           renderItem={({item}) => {
-            return <Card product={item} />;
+            return <Card producto={item} />;
           }}
         />
+
+
           <TouchableOpacity
             onPress={handleSignOut}
             style={style.button}

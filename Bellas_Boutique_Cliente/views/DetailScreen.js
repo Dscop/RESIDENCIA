@@ -91,7 +91,7 @@ const DetailScreen = ({navigation, route}) => {
             <View style={style.buyBtn}>
               <Text
                 style={{color: COLORS.white, fontSize: 18, fontWeight: 'bold'}}>
-                Buy
+                Comprar
               </Text>
             </View>
           </View>

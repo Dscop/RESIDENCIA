@@ -28,6 +28,11 @@ const HomeScreen = (props) => {
                 <Text style={[loginStyles.btntxt, {color: color.pink}]} onPress={() => props.navigation.navigate("CategoryList")}>Lista de Categorias</Text>
             </TouchableOpacity>
         </View>
+        <View style={loginStyles.btnTransparent}>
+            <TouchableOpacity>
+                <Text style={[loginStyles.btntxt, {color: color.pink}]} onPress={() => props.navigation.navigate("DiscountList")}>Lista de Descuentos</Text>
+            </TouchableOpacity>
+        </View>
         </View>
       </ScrollView>
     );

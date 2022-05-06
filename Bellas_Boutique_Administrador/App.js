@@ -20,8 +20,11 @@ import CategoryList from './views/category/CategoryList';
 import CategoryDetailScreen from './views/category/CategoryDetailScreen';
 import CreateCategoryScreen from './views/category/CreateCategoryScreen';
 
+import DiscountList from './views/discount/DiscountList';
+import DiscountDetailScreen from './views/discount/DiscountDetailScreen';
 import CreateDiscountScreen from './views/discount/CreateDiscountScreen';
 
+import EventScreen from './views/EventScreen';
 import COLORS from './styles/colors';
 
 const Stack =createStackNavigator()
@@ -29,6 +32,7 @@ const Stack =createStackNavigator()
 function MyStack(){
   return(
     <Stack.Navigator>
+      
       <Stack.Screen name= "HomeScreen" component ={HomeScreen} options={{title: 'Pantalla de inicio'}} />
 
       <Stack.Screen name= "ProductList" component ={ProductList} options={{title: 'Lista de articulos'}} />
@@ -44,6 +48,8 @@ function MyStack(){
       <Stack.Screen name= "CreateCategoryScreen" component ={CreateCategoryScreen} options={{title: 'Insertar nueva categoria'}} />
 
       <Stack.Screen name= "CreateDiscountScreen" component ={CreateDiscountScreen} options={{title: 'Insertar nuevo descuento'}} />
+      <Stack.Screen name= "DiscountList" component ={DiscountList} options={{title: 'Lista de descuentos'}} />
+      <Stack.Screen name= "DiscountDetailScreen" component ={DiscountDetailScreen} options={{title: 'Detalle de descuento'}} />
     </Stack.Navigator>
   )
 }

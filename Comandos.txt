@@ -28,3 +28,18 @@ npm i firebase --force
 expo install firebase
 npm add @react-native-firebase/firestore
 --------------------------------------------------
+expo install react-native-modal-datetime-picker @react-native-community/datetimepicker --force
+expo install react-native-modal-datetime-picker @react-native-community/datetimepicker
+npx install react-native-modal-datetime-picker @react-native-community/datetimepicker
+
+---------------------------------
+
+expo install react-navigation react-native-gesture-handler react-native-reanimated react-native-screens
+
+npm add react-navigation-stack
+
+npm add react-navigation-tabs
+
+npm add native-base
+
+expo install expo-font

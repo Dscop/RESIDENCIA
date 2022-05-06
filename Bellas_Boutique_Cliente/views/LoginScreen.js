@@ -1,4 +1,4 @@
-import React, {Component, useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import { 
     Text,
     View,
@@ -8,7 +8,6 @@ import {
     ScrollView,
     KeyboardAvoidingView,
     StyleSheet,
-    TextInput
  } from 'react-native';
 import { loginStyles } from "../styles/styles";
 import MyTextInput from "../components/MyTextInput";
@@ -17,7 +16,6 @@ import color from '../styles/colors';
 import { useNavigation } from '@react-navigation/core'
 
 import { auth } from '../database/firebase'
-import firebase from '../database/firebase'
 
  const LoginScreen = (props) => {
 
@@ -47,7 +45,6 @@ import firebase from '../database/firebase'
           })
           .catch(error => alert(error.message))
       }
-
 
         return(
             <ScrollView>
